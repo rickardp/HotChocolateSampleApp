@@ -22,7 +22,7 @@ namespace GraphQlTestApp.ViewModel
 
         public async Task<IReadOnlyCollection<MainEntity>> MainEntities(string mainEntityFilter, IResolverContext resolverContext)
         {
-            // path here is a quick hack. I would want a stringly typed way of doing this!
+            // path here is a quick hack. I would want a strongly typed way of doing this!
             var queryParams = resolverContext.GetParams<ChildFilterParams>("children");
 
             var shouldDoExpensiveQuery = queryParams != null && queryParams.Category == CategoryType.SecondaryCategory;

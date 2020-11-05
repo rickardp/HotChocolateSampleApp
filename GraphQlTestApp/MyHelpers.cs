@@ -9,7 +9,7 @@ namespace GraphQlTestApp
 {
     public static class MyHelpers
     {
-        // path here is a quick hack. I would want a stringly typed way of doing this!
+        // path here is a quick hack. I would want a strongly typed way of doing this!
         public static T? GetParams<T>(this IResolverContext context, string path)
             where T : class, new()
         {
