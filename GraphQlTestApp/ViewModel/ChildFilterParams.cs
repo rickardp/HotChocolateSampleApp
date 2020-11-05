@@ -9,7 +9,7 @@ namespace GraphQlTestApp.ViewModel
     {
         public CategoryType Category { get; set; }
 
-        public string KeyMatch { get; set; }
+        public string? KeyMatch { get; set; }
     }
 
     public enum CategoryType

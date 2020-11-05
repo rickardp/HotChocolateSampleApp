@@ -4,9 +4,9 @@ namespace GraphQlTestApp.ViewModel.Types
 {
     public class MainEntity
     {
-        public string Key { get; set; }
+        public string? Key { get; set; }
 
         [Params(typeof(ChildFilterParams))]
-        public IReadOnlyCollection<ChildEntity> Children { get; set; }
+        public IReadOnlyCollection<ChildEntity>? Children { get; set; }
     }
 }

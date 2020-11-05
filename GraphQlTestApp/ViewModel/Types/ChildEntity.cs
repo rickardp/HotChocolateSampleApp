@@ -2,6 +2,6 @@
 {
     public class ChildEntity
     {
-        public string Hello { get; set; }
+        public string? Hello { get; set; }
     }
 }
