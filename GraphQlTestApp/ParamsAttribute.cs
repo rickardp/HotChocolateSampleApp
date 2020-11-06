@@ -16,21 +16,18 @@ namespace GraphQlTestApp
     {
         public Type ParamsType { get; }
 
-        public string Key { get; }
+        public string Instance { get; }
 
         public ParamsAttribute(Type paramsType)
             : this(paramsType, string.Empty)
         {
         }
 
-        public ParamsAttribute(Type paramsType, string name)
+        public ParamsAttribute(Type paramsType, string instance)
         {
             ParamsType = paramsType;
-            Key = ComputeKey(paramsType, name);
+            Instance = instance;
         }
-
-        internal static string ComputeKey(Type paramsType, string name)
-        => "Param\0" + paramsType.FullName ?? "#" + paramsType.GetHashCode() + (string.IsNullOrEmpty(name) ? string.Empty : ("\0" + name));
 
         public override void OnConfigure(IDescriptorContext context, IObjectFieldDescriptor descriptor, MemberInfo member)
         {
@@ -46,6 +43,9 @@ namespace GraphQlTestApp
                     parms[argName] = (prop, t.Type.Type);
                 });
             }
+
+            var injectedParameters = SelectionParametersRegistry.FromContextData(context.ContextData);
+            injectedParameters?.Register(ParamsType, Instance, member);
         }
     }
 }
