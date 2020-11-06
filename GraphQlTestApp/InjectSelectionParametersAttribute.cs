@@ -18,7 +18,7 @@ namespace GraphQlTestApp
             foreach (var parameterInfo in ((MethodInfo)member).GetParameters())
             {
                 var selectionParameterAttribute = parameterInfo.GetCustomAttribute<SelectionParameterAttribute>();
-                if (selectionParameterAttribute != null)
+                if (selectionParameterAttribute != null && parameterInfo.Name != null)
                 {
                     registry.DeclareInjection(parameterInfo.ParameterType, selectionParameterAttribute.Instance, parameterInfo.Name);
                 }

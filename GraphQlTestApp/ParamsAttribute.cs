@@ -45,7 +45,7 @@ namespace GraphQlTestApp
             }
 
             var injectedParameters = SelectionParametersRegistry.FromContextData(context.ContextData);
-            injectedParameters?.Register(ParamsType, Instance, member);
+            injectedParameters?.RegisterParams(ParamsType, Instance, descriptor, parms);
         }
     }
 }
